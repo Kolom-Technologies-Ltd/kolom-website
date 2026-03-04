@@ -4,6 +4,7 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import AnimatedLogo from "@/components/AnimatedLogo";
 
 /* ------------------------------------------------------------------ */
 /*  Data                                                               */
@@ -210,6 +211,11 @@ export default function TeamSection() {
               />
               {/* Subtle bottom vignette */}
               <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black/70 to-transparent" />
+            </div>
+
+            {/* Animated logo */}
+            <div className="absolute -top-8 -right-8 z-20">
+              <AnimatedLogo className="h-auto w-16 sm:w-20" />
             </div>
 
             {/* Navigation arrows */}

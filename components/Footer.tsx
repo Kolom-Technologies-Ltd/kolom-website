@@ -184,9 +184,14 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Kolom Technologies Ltd. All rights
             reserved.
           </p>
-          <p className="text-xs text-white/20">
-            Dhaka, Bangladesh
-          </p>
+          <div className="flex items-center gap-4">
+            <Link href="/terms" className="text-xs text-white/20 transition-colors duration-300 hover:text-white/40">
+              Terms &amp; Conditions
+            </Link>
+            <Link href="/privacy" className="text-xs text-white/20 transition-colors duration-300 hover:text-white/40">
+              Privacy Policy
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

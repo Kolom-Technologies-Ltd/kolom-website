@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Preloader from "@/components/Preloader";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,9 +14,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kolom.ai"),
   title: "Kolom Technologies | Software, Design & AI Solutions",
   description:
     "Kolom Technologies Ltd. is an elite team of engineers, designers and AI specialists building the next generation of software products.",
+  openGraph: {
+    title: "Kolom Technologies | Software, Design & AI Solutions",
+    description:
+      "Kolom Technologies Ltd. is an elite team of engineers, designers and AI specialists building the next generation of software products.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kolom Technologies | Software, Design & AI Solutions",
+    description:
+      "Kolom Technologies Ltd. is an elite team of engineers, designers and AI specialists building the next generation of software products.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
@@ -28,7 +44,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Preloader>{children}</Preloader>
       </body>
     </html>
   );
