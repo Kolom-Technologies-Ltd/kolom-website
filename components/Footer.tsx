@@ -102,6 +102,7 @@ export default function Footer() {
             height={500}
             className="h-[400px] w-auto translate-x-1/4 translate-y-1/4 sm:h-[500px]"
             aria-hidden="true"
+            loading="lazy"
           />
         </div>
 

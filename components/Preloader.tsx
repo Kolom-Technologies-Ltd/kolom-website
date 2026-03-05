@@ -31,7 +31,6 @@ export default function Preloader({
     return () => window.removeEventListener("load", dismiss);
   }, []);
 
-  // After exit animation finishes, unmount the overlay
   useEffect(() => {
     if (!exiting) return;
     const el = overlayRef.current;
@@ -39,7 +38,6 @@ export default function Preloader({
 
     const handler = () => setIsLoading(false);
     el.addEventListener("transitionend", handler, { once: true });
-    // Fallback in case transitionend doesn't fire
     const fallback = setTimeout(handler, 700);
     return () => { clearTimeout(fallback); el.removeEventListener("transitionend", handler); };
   }, [exiting]);
@@ -55,7 +53,6 @@ export default function Preloader({
             transition: "opacity 0.6s cubic-bezier(0.76, 0, 0.24, 1)",
           }}
         >
-          {/* Subtle radial glow behind the logo */}
           <div
             className="absolute h-[400px] w-[400px] rounded-full opacity-20 blur-[120px]"
             style={{
@@ -63,20 +60,13 @@ export default function Preloader({
                 "radial-gradient(circle, #4093FF 0%, transparent 70%)",
             }}
           />
-
           <AnimatedLogo className="relative z-10 h-auto w-24 sm:w-28 md:w-32" />
         </div>
       )}
 
-      {/* Page content — revealed when preloader fades */}
-      <div
-        style={{
-          opacity: isLoading ? 0 : 1,
-          transition: "opacity 0.5s ease-out 0.1s",
-        }}
-      >
-        {children}
-      </div>
+      {/* Children render at full opacity — preloader overlay covers them visually.
+          Browser can paint this content immediately for fast FCP. */}
+      {children}
     </>
   );
 }
