@@ -151,7 +151,6 @@ export default async function CaseStudyPage({
               style={{ objectPosition: study.objectPosition }}
               sizes="(max-width: 1024px) 100vw, 960px"
               priority
-              unoptimized
             />
           </div>
 

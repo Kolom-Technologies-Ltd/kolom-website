@@ -4,7 +4,6 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import AnimatedLogo from "@/components/AnimatedLogo";
 
 /* ------------------------------------------------------------------ */
 /*  Data                                                               */
@@ -207,15 +206,21 @@ export default function TeamSection() {
                 className="object-cover object-top"
                 sizes="(max-width: 1024px) 100vw, 500px"
                 priority
-                unoptimized
               />
               {/* Subtle bottom vignette */}
               <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black/70 to-transparent" />
             </div>
 
-            {/* Animated logo */}
+            {/* Logo accent */}
             <div className="absolute -top-8 -right-8 z-20">
-              <AnimatedLogo className="h-auto w-16 sm:w-20" />
+              <Image
+                src="/logo/logo-icon-white.svg"
+                alt=""
+                width={80}
+                height={80}
+                className="h-auto w-16 sm:w-20"
+                aria-hidden="true"
+              />
             </div>
 
             {/* Navigation arrows */}
@@ -263,7 +268,6 @@ export default function TeamSection() {
                       fill
                       className="object-cover object-top"
                       sizes="72px"
-                      unoptimized
                     />
                   </div>
                 </button>

@@ -1,13 +1,5 @@
-"use client";
-
-import { useRef } from "react";
-import dynamic from "next/dynamic";
 import { Target, Eye, ShieldCheck, Cpu, Users, Zap } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-
-const FaultyTerminal = dynamic(() => import("@/components/FaultyTerminal"), {
-  ssr: false,
-});
 
 /* ------------------------------------------------------------------ */
 /*  Data                                                               */
@@ -47,39 +39,21 @@ const differentiators: Differentiator[] = [
 /* ------------------------------------------------------------------ */
 
 export default function AboutSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-
   return (
     <section
-      ref={sectionRef}
       id="about"
       className="relative overflow-hidden bg-black py-24 sm:py-32 lg:py-40"
     >
-      {/* FaultyTerminal WebGL background */}
-      <div className="absolute inset-0">
-        <FaultyTerminal
-          scale={2.2}
-          gridMul={[2.5, 1.2]}
-          digitSize={2.6}
-          timeScale={0.18}
-          scanlineIntensity={0.15}
-          glitchAmount={1.2}
-          flickerAmount={0.6}
-          noiseAmp={0.8}
-          chromaticAberration={2}
-          curvature={0.08}
-          tint="#2d6ab9"
-          mouseReact={true}
-          mouseStrength={0.35}
-          brightness={0.25}
-          pageLoadAnimation={false}
-          dither={1}
-        />
-      </div>
-
-      {/* Gradient overlays for readability */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50" />
+      {/* Background radial glow */}
+      <div
+        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        style={{
+          width: "80vw",
+          height: "60vh",
+          background:
+            "radial-gradient(ellipse at center, rgba(64,147,255,0.04) 0%, transparent 70%)",
+        }}
+      />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10">
         {/* ── Section header ── */}

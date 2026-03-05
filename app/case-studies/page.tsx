@@ -133,7 +133,6 @@ export default function CaseStudiesPage() {
                           className="object-cover"
                           style={{ objectPosition: study.objectPosition }}
                           sizes="320px"
-                          unoptimized
                         />
                         {/* Left fade */}
                         <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black/60 to-transparent" />

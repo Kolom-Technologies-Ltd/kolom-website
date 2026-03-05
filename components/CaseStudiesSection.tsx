@@ -118,7 +118,6 @@ export default function CaseStudiesSection() {
                 style={{ objectPosition: active.objectPosition }}
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
-                unoptimized
               />
               {/* Subtle edge blend */}
               <div className="absolute inset-y-0 right-0 hidden w-24 bg-gradient-to-l from-black/20 to-transparent lg:block" />

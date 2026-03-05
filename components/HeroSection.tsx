@@ -88,7 +88,6 @@ export default function HeroSection() {
                 width={100}
                 height={28}
                 className="h-5 w-auto rounded-full"
-                unoptimized
               />
               <span className="text-xs font-medium text-white/30">Goodfirms</span>
             </div>
@@ -99,7 +98,6 @@ export default function HeroSection() {
                 width={100}
                 height={28}
                 className="h-5 w-auto rounded-full"
-                unoptimized
               />
               <span className="text-xs font-medium text-white/30">Clutch</span>
             </div>
