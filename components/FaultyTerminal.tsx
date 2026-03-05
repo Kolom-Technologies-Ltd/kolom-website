@@ -353,13 +353,11 @@ export default function FaultyTerminal({
         loadAnimationStartRef.current = t;
       }
 
-      if (!pause) {
-        const elapsed = (t * 0.001 + timeOffsetRef.current) * timeScale;
-        program.uniforms.iTime.value = elapsed;
-        frozenTimeRef.current = elapsed;
-      } else {
-        program.uniforms.iTime.value = frozenTimeRef.current;
-      }
+      if (pause) return;
+
+      const elapsed = (t * 0.001 + timeOffsetRef.current) * timeScale;
+      program.uniforms.iTime.value = elapsed;
+      frozenTimeRef.current = elapsed;
 
       if (pageLoadAnimation && loadAnimationStartRef.current > 0) {
         const animationDuration = 2000;

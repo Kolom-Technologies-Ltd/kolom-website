@@ -18,7 +18,7 @@ export const team: TeamMember[] = [
       "Generated $80K+ in client revenue via scalable B2B sales funnels",
     ],
     techStack: ["HubSpot", "Google Ads", "Klaviyo", "CRM", "Scikit-learn", "Data Analytics"],
-    image: "/team/likhon.png",
+    image: "/team/likhon.webp",
   },
   {
     name: "Md. Hashibul Islam",
@@ -30,7 +30,7 @@ export const team: TeamMember[] = [
       "Developed mission-critical software for NASA's Astrobee on the ISS",
     ],
     techStack: ["Java", "Spring", "Microservices", "Python", "PostgreSQL", "AWS", "Docker", "K8s"],
-    image: "/team/hasib.png",
+    image: "/team/hasib.webp",
   },
   {
     name: "Shitab Mir",
@@ -42,7 +42,7 @@ export const team: TeamMember[] = [
       "Drove enterprise digital transformation through robust MSME solutions",
     ],
     techStack: ["Android", "iOS", "Flutter", "Kotlin Multiplatform", "API Integration"],
-    image: "/team/shitab.png",
+    image: "/team/shitab.webp",
   },
   {
     name: "Md. Raihan Rahman",
@@ -54,7 +54,7 @@ export const team: TeamMember[] = [
       "End-to-end lifecycle leadership for secure, scalable enterprise solutions",
     ],
     techStack: ["E2E Testing", "Product Strategy", "Oracle SQL", "HIPAA Security", "IoT", "JIRA"],
-    image: "/team/raihan.png",
+    image: "/team/raihan.webp",
   },
   {
     name: "Touhidul Islam Chayan",
@@ -66,7 +66,7 @@ export const team: TeamMember[] = [
       "IEEE-published ML medical imaging solution",
     ],
     techStack: ["React/Next.js", "TypeScript", "React Native", "Node.js", "Go", ".NET Core", "Python", "AWS"],
-    image: "/team/chayan.png",
+    image: "/team/chayan.webp",
   },
   {
     name: "A. A. Noman Ansary",
@@ -78,6 +78,6 @@ export const team: TeamMember[] = [
       "Created interactive 3D educational web games",
     ],
     techStack: ["Django", "FastAPI", ".NET", "Three.js", "PyTorch", "vLLM", "Redis", "Docker"],
-    image: "/team/ansary.png",
+    image: "/team/ansary.webp",
   },
 ];
