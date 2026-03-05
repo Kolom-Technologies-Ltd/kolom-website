@@ -3,11 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import AnimatedLogo from "@/components/AnimatedLogo";
 
-export default function Preloader({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
   const [exiting, setExiting] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -42,31 +38,25 @@ export default function Preloader({
     return () => { clearTimeout(fallback); el.removeEventListener("transitionend", handler); };
   }, [exiting]);
 
-  return (
-    <>
-      {isLoading && (
-        <div
-          ref={overlayRef}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black"
-          style={{
-            opacity: exiting ? 0 : 1,
-            transition: "opacity 0.6s cubic-bezier(0.76, 0, 0.24, 1)",
-          }}
-        >
-          <div
-            className="absolute h-[400px] w-[400px] rounded-full opacity-20 blur-[120px]"
-            style={{
-              background:
-                "radial-gradient(circle, #4093FF 0%, transparent 70%)",
-            }}
-          />
-          <AnimatedLogo className="relative z-10 h-auto w-24 sm:w-28 md:w-32" />
-        </div>
-      )}
+  if (!isLoading) return null;
 
-      {/* Children render at full opacity — preloader overlay covers them visually.
-          Browser can paint this content immediately for fast FCP. */}
-      {children}
-    </>
+  return (
+    <div
+      ref={overlayRef}
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black"
+      style={{
+        opacity: exiting ? 0 : 1,
+        transition: "opacity 0.6s cubic-bezier(0.76, 0, 0.24, 1)",
+      }}
+    >
+      <div
+        className="absolute h-[400px] w-[400px] rounded-full opacity-20 blur-[120px]"
+        style={{
+          background:
+            "radial-gradient(circle, #4093FF 0%, transparent 70%)",
+        }}
+      />
+      <AnimatedLogo className="relative z-10 h-auto w-24 sm:w-28 md:w-32" />
+    </div>
   );
 }

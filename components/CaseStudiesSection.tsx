@@ -1,49 +1,40 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { caseStudies } from "@/lib/case-studies";
 import { caseStudyIcons } from "@/lib/case-study-icons";
 
-/* ------------------------------------------------------------------ */
-/*  Component                                                          */
-/* ------------------------------------------------------------------ */
+const imageVariants = {
+  initial: { scale: 0.98, opacity: 0 },
+  animate: { scale: 1, opacity: 1 },
+  exit: { scale: 0.98, opacity: 0 },
+};
+
+const contentVariants = {
+  initial: { y: 12, opacity: 0 },
+  animate: { y: 0, opacity: 1 },
+  exit: { y: 12, opacity: 0 },
+};
+
+const transition = { duration: 0.3, ease: "easeOut" as const };
 
 export default function CaseStudiesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [displayIndex, setDisplayIndex] = useState(0);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const switchTo = useCallback(
-    (index: number) => {
-      if (index === activeIndex || isTransitioning) return;
-      setIsTransitioning(true);
-      setActiveIndex(index);
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => {
-        setDisplayIndex(index);
-        setIsTransitioning(false);
-      }, 300);
-    },
-    [activeIndex, isTransitioning]
-  );
+  const switchTo = (index: number) => {
+    if (index !== activeIndex) setActiveIndex(index);
+  };
 
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, []);
-
-  const active = caseStudies[displayIndex];
+  const active = caseStudies[activeIndex];
   const ActiveIcon = caseStudyIcons[active.iconName];
 
   return (
     <section
-      id="work"
       className="relative overflow-hidden bg-black py-24 sm:py-32 lg:py-40"
     >
       {/* Background radial glow */}
@@ -102,112 +93,119 @@ export default function CaseStudiesSection() {
         <div className="mt-10 overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] lg:mt-12">
           <div className="lg:grid lg:grid-cols-2">
             {/* Image half */}
-            <div
-              className={cn(
-                "relative aspect-[16/10] overflow-hidden bg-neutral-900 transition-all duration-500 ease-out lg:aspect-auto lg:min-h-[480px]",
-                isTransitioning
-                  ? "scale-[0.98] opacity-0"
-                  : "scale-100 opacity-100"
-              )}
-            >
-              <Image
-                src={active.image}
-                alt={active.title}
-                fill
-                className="object-cover"
-                style={{ objectPosition: active.objectPosition }}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                loading="lazy"
-              />
-              {/* Subtle edge blend */}
-              <div className="absolute inset-y-0 right-0 hidden w-24 bg-gradient-to-l from-black/20 to-transparent lg:block" />
-              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/30 to-transparent lg:hidden" />
+            <div className="relative aspect-[16/10] overflow-hidden bg-neutral-900 lg:aspect-auto lg:min-h-[480px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  variants={imageVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  transition={transition}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={active.image}
+                    alt={active.title}
+                    fill
+                    className="object-cover"
+                    style={{ objectPosition: active.objectPosition }}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    loading="lazy"
+                  />
+                  {/* Subtle edge blend */}
+                  <div className="absolute inset-y-0 right-0 hidden w-24 bg-gradient-to-l from-black/20 to-transparent lg:block" />
+                  <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/30 to-transparent lg:hidden" />
+                </motion.div>
+              </AnimatePresence>
             </div>
 
             {/* Content half */}
             <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
-              <div
-                className={cn(
-                  "transition-all duration-300 ease-out",
-                  isTransitioning
-                    ? "translate-y-3 opacity-0"
-                    : "translate-y-0 opacity-100"
-                )}
-              >
-                {/* Tags */}
-                <div className="mb-5 flex flex-wrap gap-2">
-                  {active.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-md border border-white/[0.06] bg-white/[0.03] px-2.5 py-1 text-[11px] font-medium text-white/35"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Title + tagline */}
-                <div className="mb-2 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04]">
-                    <ActiveIcon
-                      size={18}
-                      strokeWidth={1.5}
-                      className="text-[#4093FF]"
-                    />
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  variants={contentVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  transition={transition}
+                >
+                  {/* Tags */}
+                  <div className="mb-5 flex flex-wrap gap-2">
+                    {active.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-md border border-white/[0.06] bg-white/[0.03] px-2.5 py-1 text-[11px] font-medium text-white/35"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
-                  <h3 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                    {active.title}
-                  </h3>
-                </div>
-                <p className="mb-5 text-sm font-medium text-[#4093FF]/60">
-                  {active.tagline}
-                </p>
 
-                {/* Description */}
-                <p className="mb-8 text-sm leading-relaxed text-white/40 sm:text-base">
-                  {active.description}
-                </p>
-
-                {/* Mini stats row */}
-                <div className="mb-8 grid grid-cols-3 gap-4">
-                  {active.stats.map((stat) => (
-                    <div key={stat.label}>
-                      <p className="text-xs text-white/25">{stat.label}</p>
-                      <p className="mt-0.5 text-sm font-semibold text-white/70">
-                        {stat.value}
-                      </p>
+                  {/* Title + tagline */}
+                  <div className="mb-2 flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04]">
+                      <ActiveIcon
+                        size={18}
+                        strokeWidth={1.5}
+                        className="text-[#4093FF]"
+                      />
                     </div>
-                  ))}
-                </div>
+                    <h3 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                      {active.title}
+                    </h3>
+                  </div>
+                  <p className="mb-5 text-sm font-medium text-[#4093FF]/60">
+                    {active.tagline}
+                  </p>
 
-                {/* CTAs */}
-                <div className="flex flex-wrap items-center gap-3">
-                  <a
-                    href={active.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/link inline-flex items-center gap-2 rounded-full border border-[#4093FF]/30 bg-[#4093FF]/10 px-6 py-2.5 text-sm font-medium text-[#4093FF] transition-all duration-300 hover:bg-[#4093FF]/20 hover:text-white hover:shadow-[0_0_24px_rgba(64,147,255,0.15)]"
-                  >
-                    Visit Live Project
-                    <ExternalLink
-                      size={14}
-                      strokeWidth={2}
-                      className="transition-transform duration-300 group-hover/link:translate-x-0.5"
-                    />
-                  </a>
-                  <Link
-                    href={`/case-studies/${active.slug}`}
-                    className="group/cs inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.02] px-6 py-2.5 text-sm font-medium text-white/50 transition-all duration-300 hover:border-white/15 hover:text-white/80"
-                  >
-                    View Case Study
-                    <ArrowRight
-                      size={14}
-                      strokeWidth={2}
-                      className="transition-transform duration-300 group-hover/cs:translate-x-0.5"
-                    />
-                  </Link>
-                </div>
-              </div>
+                  {/* Description */}
+                  <p className="mb-8 text-sm leading-relaxed text-white/40 sm:text-base">
+                    {active.description}
+                  </p>
+
+                  {/* Mini stats row */}
+                  <div className="mb-8 grid grid-cols-3 gap-4">
+                    {active.stats.map((stat) => (
+                      <div key={stat.label}>
+                        <p className="text-xs text-white/25">{stat.label}</p>
+                        <p className="mt-0.5 text-sm font-semibold text-white/70">
+                          {stat.value}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* CTAs */}
+                  <div className="flex flex-wrap items-center gap-3">
+                    <a
+                      href={active.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/link inline-flex items-center gap-2 rounded-full border border-[#4093FF]/30 bg-[#4093FF]/10 px-6 py-2.5 text-sm font-medium text-[#4093FF] transition-all duration-300 hover:bg-[#4093FF]/20 hover:text-white hover:shadow-[0_0_24px_rgba(64,147,255,0.15)]"
+                    >
+                      Visit Live Project
+                      <ExternalLink
+                        size={14}
+                        strokeWidth={2}
+                        className="transition-transform duration-300 group-hover/link:translate-x-0.5"
+                      />
+                    </a>
+                    <Link
+                      href={`/case-studies/${active.slug}`}
+                      className="group/cs inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.02] px-6 py-2.5 text-sm font-medium text-white/50 transition-all duration-300 hover:border-white/15 hover:text-white/80"
+                    >
+                      View Case Study
+                      <ArrowRight
+                        size={14}
+                        strokeWidth={2}
+                        className="transition-transform duration-300 group-hover/cs:translate-x-0.5"
+                      />
+                    </Link>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState } from "react";
 import {
   Users,
   ScanSearch,
@@ -13,6 +13,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ */
@@ -108,43 +109,38 @@ const serviceCategories: ServiceCategory[] = [
 ];
 
 /* ------------------------------------------------------------------ */
+/*  Animation variants                                                 */
+/* ------------------------------------------------------------------ */
+
+const contentVariants = {
+  initial: { y: 8, opacity: 0 },
+  animate: { y: 0, opacity: 1 },
+  exit: { y: 8, opacity: 0 },
+};
+
+const contentTransition = { duration: 0.25, ease: "easeOut" as const };
+
+const capVariants = {
+  initial: { x: -12, opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+};
+
+/* ------------------------------------------------------------------ */
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
 
 export default function SolutionsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [displayIndex, setDisplayIndex] = useState(0);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const handleTabClick = useCallback(
-    (index: number) => {
-      if (index === activeIndex || isTransitioning) return;
+  const handleTabClick = (index: number) => {
+    if (index !== activeIndex) setActiveIndex(index);
+  };
 
-      setIsTransitioning(true);
-      setActiveIndex(index);
-
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => {
-        setDisplayIndex(index);
-        setIsTransitioning(false);
-      }, 250);
-    },
-    [activeIndex, isTransitioning]
-  );
-
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, []);
-
-  const active = pillars[displayIndex];
+  const active = pillars[activeIndex];
   const ActiveIcon = active.icon;
 
   return (
     <section
-      id="solutions"
       className="relative overflow-hidden bg-black py-24 sm:py-32 lg:py-40"
     >
       {/* Background radial glow */}
@@ -264,61 +260,61 @@ export default function SolutionsSection() {
             </div>
 
             {/* Crossfade wrapper */}
-            <div
-              className={cn(
-                "transition-all duration-250 ease-out",
-                isTransitioning
-                  ? "translate-y-2 opacity-0"
-                  : "translate-y-0 opacity-100"
-              )}
-            >
-              {/* Icon + title + tagline */}
-              <div className="mb-4 flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04]">
-                  <ActiveIcon
-                    size={24}
-                    strokeWidth={1.5}
-                    className="text-[#4093FF]"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
-                    {active.label}
-                  </h3>
-                  <p className="text-sm text-[#4093FF]/70">
-                    {active.tagline}
-                  </p>
-                </div>
-              </div>
-
-              {/* Description */}
-              <p className="mb-8 max-w-xl text-sm leading-relaxed text-white/40 sm:text-base">
-                {active.description}
-              </p>
-
-              {/* Capability cards — staggered entrance */}
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {active.capabilities.map((cap, i) => (
-                  <div
-                    key={cap}
-                    className={cn(
-                      "rounded-xl border border-white/[0.08] bg-white/[0.02] px-5 py-4 text-sm text-white/50 transition-all duration-500 ease-out",
-                      isTransitioning
-                        ? "translate-x-[-12px] opacity-0"
-                        : "translate-x-0 opacity-100"
-                    )}
-                    style={{
-                      transitionDelay: isTransitioning
-                        ? "0ms"
-                        : `${i * 75}ms`,
-                    }}
-                  >
-                    <span className="mr-2 text-[#4093FF]/50">&#x2022;</span>
-                    {cap}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                variants={contentVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={contentTransition}
+              >
+                {/* Icon + title + tagline */}
+                <div className="mb-4 flex items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04]">
+                    <ActiveIcon
+                      size={24}
+                      strokeWidth={1.5}
+                      className="text-[#4093FF]"
+                    />
                   </div>
-                ))}
-              </div>
-            </div>
+                  <div>
+                    <h3 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
+                      {active.label}
+                    </h3>
+                    <p className="text-sm text-[#4093FF]/70">
+                      {active.tagline}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <p className="mb-8 max-w-xl text-sm leading-relaxed text-white/40 sm:text-base">
+                  {active.description}
+                </p>
+
+                {/* Capability cards — staggered entrance */}
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  {active.capabilities.map((cap, i) => (
+                    <motion.div
+                      key={cap}
+                      variants={capVariants}
+                      initial="initial"
+                      animate="animate"
+                      transition={{
+                        duration: 0.5,
+                        ease: "easeOut" as const,
+                        delay: i * 0.075,
+                      }}
+                      className="rounded-xl border border-white/[0.08] bg-white/[0.02] px-5 py-4 text-sm text-white/50"
+                    >
+                      <span className="mr-2 text-[#4093FF]/50">&#x2022;</span>
+                      {cap}
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
 

@@ -3,11 +3,10 @@ import Link from "next/link";
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Case Studies", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Team", href: "#team" },
+  { label: "Services", href: "/services" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "About", href: "/about" },
 ];
 
 const contactInfo = [

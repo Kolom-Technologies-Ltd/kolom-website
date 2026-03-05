@@ -76,7 +76,7 @@ export default async function CaseStudyPage({
         <div className="relative z-10 mx-auto max-w-5xl px-6 md:px-10">
           {/* ── Back link ── */}
           <Link
-            href="/#work"
+            href="/case-studies"
             className="group mb-10 inline-flex items-center gap-2 text-sm text-white/40 transition-colors duration-300 hover:text-[#4093FF]"
           >
             <ArrowLeft

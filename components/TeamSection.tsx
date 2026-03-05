@@ -3,7 +3,6 @@ import TeamCarousel from "@/components/TeamCarousel";
 export default function TeamSection() {
   return (
     <section
-      id="team"
       className="relative overflow-hidden bg-black py-24 sm:py-32 lg:py-40"
     >
       {/* Background radial glow */}

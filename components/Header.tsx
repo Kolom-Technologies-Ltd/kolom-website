@@ -8,10 +8,10 @@ import { caseStudies } from "@/lib/case-studies";
 import { caseStudyIcons } from "@/lib/case-study-icons";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Case Studies", href: "#work" },
-  { label: "About", href: "#about" },
+  { label: "Services", href: "/services" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "About", href: "/about" },
 ];
 
 export default function Header() {

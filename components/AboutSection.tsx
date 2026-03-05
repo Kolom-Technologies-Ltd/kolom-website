@@ -41,7 +41,6 @@ const differentiators: Differentiator[] = [
 export default function AboutSection() {
   return (
     <section
-      id="about"
       className="relative overflow-hidden bg-black py-24 sm:py-32 lg:py-40"
     >
       {/* Background radial glow */}

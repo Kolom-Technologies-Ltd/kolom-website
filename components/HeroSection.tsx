@@ -1,38 +1,13 @@
-"use client";
-
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
-
-const FaultyTerminal = dynamic(() => import("@/components/FaultyTerminal"), {
-  ssr: false,
-});
+import FaultyTerminalBg from "@/components/FaultyTerminalBg";
 
 export default function HeroSection() {
   return (
     <section className="relative flex min-h-svh items-center justify-center overflow-hidden bg-black">
       {/* FaultyTerminal WebGL background */}
-      <div className="absolute inset-0">
-        <FaultyTerminal
-          scale={2.2}
-          gridMul={[2.5, 1.2]}
-          digitSize={2.6}
-          timeScale={0.18}
-          scanlineIntensity={0.15}
-          glitchAmount={1.2}
-          flickerAmount={0.6}
-          noiseAmp={0.8}
-          chromaticAberration={2}
-          curvature={0.08}
-          tint="#2d6ab9"
-          mouseReact={true}
-          mouseStrength={0.35}
-          brightness={0.35}
-          pageLoadAnimation={true}
-          dither={1}
-        />
-      </div>
+      <FaultyTerminalBg />
 
       {/* Gradient overlays for depth and readability */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
@@ -107,7 +82,7 @@ export default function HeroSection() {
         {/* CTAs — re-enable pointer events for clickable elements */}
         <div className="pointer-events-auto mt-5 flex flex-col gap-3 sm:flex-row sm:gap-4">
           <Link
-            href="#work"
+            href="/case-studies"
             className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-semibold text-black transition-all duration-300 hover:bg-[#4093FF] hover:text-white hover:shadow-[0_0_30px_rgba(64,147,255,0.3)]"
           >
             View Our Work
@@ -117,7 +92,7 @@ export default function HeroSection() {
             />
           </Link>
           <Link
-            href="#services"
+            href="/services"
             className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-7 py-3 text-sm font-medium text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
           >
             Our Services
@@ -136,7 +111,7 @@ export default function HeroSection() {
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
         <a
-          href="#services"
+          href="/services"
           className="flex flex-col items-center gap-1 text-white/30 transition-colors hover:text-white/50"
         >
           <span className="text-[10px] font-medium tracking-widest uppercase">
