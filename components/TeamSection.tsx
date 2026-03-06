@@ -13,7 +13,7 @@ export default function TeamSection() {
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10">
         {/* ── Header: heading left, description right ── */}
         <div className="lg:flex lg:items-end lg:gap-20">
-          <div className="shrink-0">
+          <div className="shrink-0 text-center sm:text-left">
             <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium tracking-wide text-white/50 backdrop-blur-sm">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#4093FF]" />
               Who We Are

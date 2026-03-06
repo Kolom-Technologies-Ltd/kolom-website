@@ -158,13 +158,13 @@ export default function AboutSection() {
         </div>
 
         {/* ── Differentiators ── */}
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-6">
+        <div className="mt-12 grid grid-cols-2 grid-rows-2 gap-2.5 sm:grid-rows-none sm:gap-4 lg:mt-16 lg:grid-cols-4 lg:gap-6">
           {differentiators.map((d) => {
             const Icon = d.icon;
             return (
               <div
                 key={d.title}
-                className="group relative rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 backdrop-blur-sm transition-all duration-500 ease-out hover:border-[#4093FF]/40 hover:bg-white/[0.04] hover:shadow-[0_0_40px_rgba(64,147,255,0.06)]"
+                className="group relative rounded-xl sm:rounded-2xl border border-white/[0.08] bg-white/[0.02] p-4 sm:p-6 backdrop-blur-sm transition-all duration-500 ease-out hover:border-[#4093FF]/40 hover:bg-white/[0.04] hover:shadow-[0_0_40px_rgba(64,147,255,0.06)]"
               >
                 {/* Hover glow */}
                 <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100">
@@ -177,23 +177,22 @@ export default function AboutSection() {
                   />
                 </div>
 
-                <div className="relative mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] transition-all duration-500 group-hover:border-[#4093FF]/30 group-hover:bg-[#4093FF]/10 group-hover:shadow-[0_0_20px_rgba(64,147,255,0.15)]">
+                <div className="relative mb-3 sm:mb-4 flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-lg sm:rounded-xl border border-white/[0.08] bg-white/[0.04] transition-all duration-500 group-hover:border-[#4093FF]/30 group-hover:bg-[#4093FF]/10 group-hover:shadow-[0_0_20px_rgba(64,147,255,0.15)]">
                   <Icon
-                    size={18}
                     strokeWidth={1.5}
-                    className="text-white/50 transition-colors duration-500 group-hover:text-[#4093FF]"
+                    className="h-4 w-4 sm:h-[18px] sm:w-[18px] text-white/50 transition-colors duration-500 group-hover:text-[#4093FF]"
                   />
                 </div>
 
-                <h4 className="relative mb-1.5 text-sm font-semibold tracking-tight text-white">
+                <h4 className="relative mb-1.5 text-xs sm:text-sm font-semibold tracking-tight text-white">
                   {d.title}
                 </h4>
-                <p className="relative text-sm leading-relaxed text-white/35 transition-colors duration-500 group-hover:text-white/55">
+                <p className="relative text-xs sm:text-sm leading-relaxed text-white/35 transition-colors duration-500 group-hover:text-white/55">
                   {d.description}
                 </p>
 
                 {/* Bottom accent */}
-                <div className="absolute inset-x-6 bottom-0 h-px scale-x-0 bg-gradient-to-r from-transparent via-[#4093FF]/40 to-transparent transition-transform duration-500 group-hover:scale-x-100" />
+                <div className="absolute inset-x-4 sm:inset-x-6 bottom-0 h-px scale-x-0 bg-gradient-to-r from-transparent via-[#4093FF]/40 to-transparent transition-transform duration-500 group-hover:scale-x-100" />
               </div>
             );
           })}

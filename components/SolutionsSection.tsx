@@ -173,8 +173,8 @@ export default function SolutionsSection() {
           </p>
         </div>
 
-        {/* ── Mobile pill tabs (horizontal scroll) ── */}
-        <div className="mt-12 flex gap-2 overflow-x-auto pb-2 scrollbar-hide lg:hidden">
+        {/* ── Mobile pill tabs (wrapped) ── */}
+        <div className="mt-10 flex flex-wrap justify-center gap-2 sm:mt-12 lg:hidden">
           {pillars.map((pillar, i) => {
             const Icon = pillar.icon;
             return (
@@ -182,13 +182,13 @@ export default function SolutionsSection() {
                 key={pillar.label}
                 onClick={() => handleTabClick(i)}
                 className={cn(
-                  "flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-all duration-500 ease-out",
+                  "flex items-center gap-1.5 sm:gap-2 rounded-full border px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-500 ease-out",
                   activeIndex === i
                     ? "border-[#4093FF]/50 bg-[#4093FF]/10 text-white"
                     : "border-white/[0.08] bg-white/[0.02] text-white/40 hover:border-white/15 hover:text-white/60"
                 )}
               >
-                <Icon size={16} strokeWidth={1.5} />
+                <Icon size={14} strokeWidth={1.5} className="sm:h-4 sm:w-4" />
                 {pillar.label}
               </button>
             );
@@ -238,9 +238,9 @@ export default function SolutionsSection() {
           </div>
 
           {/* ── Content area ── */}
-          <div className="mt-8 min-h-[420px] lg:mt-0">
+          <div className="mt-6 sm:mt-8 min-h-[320px] sm:min-h-[420px] lg:mt-0">
             {/* Step counter + dots */}
-            <div className="mb-6 flex items-center gap-3">
+            <div className="mb-4 sm:mb-6 flex items-center gap-3">
               <span className="text-xs font-medium tabular-nums text-white/30">
                 {String(activeIndex + 1).padStart(2, "0")}/05
               </span>
@@ -270,16 +270,15 @@ export default function SolutionsSection() {
                 transition={contentTransition}
               >
                 {/* Icon + title + tagline */}
-                <div className="mb-4 flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04]">
+                <div className="mb-3 sm:mb-4 flex items-center gap-3 sm:gap-4">
+                  <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg sm:rounded-xl border border-white/[0.08] bg-white/[0.04]">
                     <ActiveIcon
-                      size={24}
                       strokeWidth={1.5}
-                      className="text-[#4093FF]"
+                      className="h-5 w-5 sm:h-6 sm:w-6 text-[#4093FF]"
                     />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
+                    <h3 className="text-lg font-semibold tracking-tight text-white sm:text-2xl">
                       {active.label}
                     </h3>
                     <p className="text-sm text-[#4093FF]/70">
@@ -289,12 +288,12 @@ export default function SolutionsSection() {
                 </div>
 
                 {/* Description */}
-                <p className="mb-8 max-w-xl text-sm leading-relaxed text-white/40 sm:text-base">
+                <p className="mb-5 sm:mb-8 max-w-xl text-xs sm:text-base leading-relaxed text-white/40">
                   {active.description}
                 </p>
 
                 {/* Capability cards — staggered entrance */}
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <div className="grid grid-cols-2 gap-2 sm:gap-3">
                   {active.capabilities.map((cap, i) => (
                     <motion.div
                       key={cap}
@@ -306,7 +305,7 @@ export default function SolutionsSection() {
                         ease: "easeOut" as const,
                         delay: i * 0.075,
                       }}
-                      className="rounded-xl border border-white/[0.08] bg-white/[0.02] px-5 py-4 text-sm text-white/50"
+                      className="rounded-lg sm:rounded-xl border border-white/[0.08] bg-white/[0.02] px-3 py-2.5 sm:px-5 sm:py-4 text-xs sm:text-sm text-white/50"
                     >
                       <span className="mr-2 text-[#4093FF]/50">&#x2022;</span>
                       {cap}
@@ -319,13 +318,13 @@ export default function SolutionsSection() {
         </div>
 
         {/* ── Service categories bar ── */}
-        <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-2 grid-rows-2 gap-2.5 sm:mt-16 sm:gap-4 lg:mt-20 lg:grid-cols-4 lg:grid-rows-none">
           {serviceCategories.map((svc) => {
             const Icon = svc.icon;
             return (
               <div
                 key={svc.name}
-                className="group relative rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 transition-all duration-500 ease-out hover:border-[#4093FF]/40 hover:bg-white/[0.04] hover:shadow-[0_0_40px_rgba(64,147,255,0.06)]"
+                className="group relative rounded-xl sm:rounded-2xl border border-white/[0.08] bg-white/[0.02] p-4 sm:p-6 transition-all duration-500 ease-out hover:border-[#4093FF]/40 hover:bg-white/[0.04] hover:shadow-[0_0_40px_rgba(64,147,255,0.06)]"
               >
                 {/* Hover glow overlay */}
                 <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100">
@@ -339,21 +338,20 @@ export default function SolutionsSection() {
                 </div>
 
                 {/* Icon */}
-                <div className="relative mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] transition-all duration-500 group-hover:border-[#4093FF]/30 group-hover:bg-[#4093FF]/10 group-hover:shadow-[0_0_20px_rgba(64,147,255,0.15)]">
+                <div className="relative mb-3 sm:mb-4 flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-lg sm:rounded-xl border border-white/[0.08] bg-white/[0.04] transition-all duration-500 group-hover:border-[#4093FF]/30 group-hover:bg-[#4093FF]/10 group-hover:shadow-[0_0_20px_rgba(64,147,255,0.15)]">
                   <Icon
-                    size={18}
                     strokeWidth={1.5}
-                    className="text-white/50 transition-colors duration-500 group-hover:text-[#4093FF]"
+                    className="h-4 w-4 sm:h-[18px] sm:w-[18px] text-white/50 transition-colors duration-500 group-hover:text-[#4093FF]"
                   />
                 </div>
 
                 {/* Name */}
-                <h4 className="relative text-sm font-semibold tracking-tight text-white transition-colors duration-500 group-hover:text-white">
+                <h4 className="relative text-xs sm:text-sm font-semibold tracking-tight text-white transition-colors duration-500 group-hover:text-white">
                   {svc.name}
                 </h4>
 
                 {/* Bottom accent line */}
-                <div className="absolute inset-x-6 bottom-0 h-px scale-x-0 bg-gradient-to-r from-transparent via-[#4093FF]/40 to-transparent transition-transform duration-500 group-hover:scale-x-100" />
+                <div className="absolute inset-x-4 sm:inset-x-6 bottom-0 h-px scale-x-0 bg-gradient-to-r from-transparent via-[#4093FF]/40 to-transparent transition-transform duration-500 group-hover:scale-x-100" />
               </div>
             );
           })}

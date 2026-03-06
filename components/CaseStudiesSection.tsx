@@ -178,7 +178,7 @@ export default function CaseStudiesSection() {
                   </div>
 
                   {/* CTAs */}
-                  <div className="flex flex-wrap items-center gap-3">
+                  <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-start">
                     <a
                       href={active.url}
                       target="_blank"

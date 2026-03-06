@@ -1,19 +1,19 @@
 import Image from "next/image";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
-import FaultyTerminalBg from "@/components/FaultyTerminalBg";
+import FloatingLinesBg from "@/components/FloatingLinesBg";
 
 export default function HeroSection() {
   return (
     <section className="relative flex min-h-svh items-center justify-center overflow-hidden bg-black">
-      {/* FaultyTerminal WebGL background */}
-      <FaultyTerminalBg />
+      {/* FloatingLines WebGL background */}
+      <FloatingLinesBg />
 
       {/* Gradient overlays for depth and readability */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black" />
 
-      {/* Content — pointer-events-none so mouse passes through to FaultyTerminal */}
+      {/* Content — pointer-events-none so mouse passes through to FloatingLines */}
       <div className="pointer-events-none relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 text-center">
         {/* Badge */}
         <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 backdrop-blur-sm">
@@ -50,7 +50,7 @@ export default function HeroSection() {
         {/* Enlisted on */}
         <div className="my-8 flex flex-col items-center gap-2 md:mt-10">
           <span
-            className="text-[11px] font-medium tracking-[0.2em] text-white/10 uppercase"
+            className="text-[11px] font-medium tracking-[0.2em] text-white/50 uppercase"
             style={{ textShadow: "0 1px 12px rgba(0,0,0,0.6)" }}
           >
             Enlisted on
@@ -83,12 +83,13 @@ export default function HeroSection() {
         <div className="pointer-events-auto mt-5 flex flex-col gap-3 sm:flex-row sm:gap-4">
           <Link
             href="/case-studies"
-            className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-semibold text-black transition-all duration-300 hover:bg-[#4093FF] hover:text-white hover:shadow-[0_0_30px_rgba(64,147,255,0.3)]"
+            className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-[#4093FF] px-8 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#5aa3ff] hover:shadow-[0_0_40px_rgba(64,147,255,0.3)]"
           >
             View Our Work
-            <ArrowRight
+            <ArrowUpRight
               size={16}
-              className="transition-transform duration-300 group-hover:translate-x-0.5"
+              strokeWidth={2.5}
+              className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
             />
           </Link>
           <Link

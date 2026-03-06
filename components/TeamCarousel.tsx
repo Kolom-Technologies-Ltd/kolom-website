@@ -38,8 +38,8 @@ export default function TeamCarousel() {
 
   return (
     <div className="mt-12 lg:mt-20 lg:grid lg:grid-cols-[1fr_440px] lg:items-end lg:gap-12 xl:grid-cols-[1fr_500px]">
-      {/* Featured image — first in DOM for mobile, right column on desktop */}
-      <div className="relative lg:order-2">
+      {/* Featured image — hidden on mobile, right column on desktop */}
+      <div className="relative hidden lg:block lg:order-2">
         {/* Blue geometric triangle accent */}
         <div
           className="absolute -bottom-6 -right-6 z-0 h-[55%] w-[60%] rounded-br-3xl bg-gradient-to-br from-[rgba(64,147,255,0.12)] to-[rgba(64,147,255,0.35)] [clip-path:polygon(100%_0%,100%_100%,0%_100%)]"
@@ -110,28 +110,26 @@ export default function TeamCarousel() {
       {/* Info column — second in DOM for mobile, left column on desktop */}
       <div className="mt-10 lg:order-1 lg:mt-0">
         {/* Thumbnail strip */}
-        <div className="mb-8 flex gap-3 overflow-x-auto p-1 scrollbar-hide">
+        <div className="mb-8 grid grid-cols-3 gap-2.5 sm:flex sm:gap-3 sm:overflow-x-auto sm:p-1 sm:scrollbar-hide">
           {team.map((m, i) => (
             <button
               key={m.name}
               onClick={() => switchTo(i)}
               className={cn(
-                "relative h-[72px] w-[72px] shrink-0 rounded-xl border-2 transition-all duration-500",
+                "relative overflow-hidden aspect-square sm:aspect-auto sm:h-[72px] sm:w-[72px] shrink-0 rounded-xl border-2 transition-all duration-500",
                 activeIndex === i
                   ? "scale-105 border-[#4093FF] opacity-100"
                   : "border-white/[0.08] opacity-40 grayscale hover:opacity-60 hover:grayscale-0"
               )}
             >
-              <div className="absolute inset-0 overflow-hidden rounded-[10px]">
-                <Image
-                  src={m.image}
-                  alt={m.name}
-                  fill
-                  className="object-cover object-top"
-                  sizes="72px"
-                  loading="lazy"
-                />
-              </div>
+              <Image
+                src={m.image}
+                alt={m.name}
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 640px) 30vw, 72px"
+                loading="lazy"
+              />
             </button>
           ))}
         </div>

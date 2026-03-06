@@ -85,14 +85,14 @@ export default function ServicesSection() {
         </div>
 
         {/* Domain cards grid */}
-        <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:mt-20 lg:grid-cols-3 lg:gap-6">
+        <div className="mt-12 flex flex-wrap justify-center gap-2.5 sm:mt-16 sm:gap-5 lg:mt-20 lg:grid lg:grid-cols-3 lg:gap-6">
           {domains.map((domain) => {
             const Icon = domain.icon;
 
             return (
               <div
                 key={domain.name}
-                className="group relative rounded-2xl border border-white/[0.08] bg-white/[0.02] p-7 transition-all duration-500 ease-out hover:border-[#4093FF]/40 hover:bg-white/[0.04] hover:shadow-[0_0_40px_rgba(64,147,255,0.06)] sm:p-8 [&:nth-child(4)]:lg:col-start-1 [&:nth-child(4)]:lg:col-end-2 [&:nth-child(4)]:lg:translate-x-[50%] [&:nth-child(5)]:lg:col-start-2 [&:nth-child(5)]:lg:col-end-3 [&:nth-child(5)]:lg:translate-x-[50%]"
+                className="group relative w-[calc(50%-0.3125rem)] sm:w-[calc(50%-0.625rem)] lg:w-auto rounded-xl sm:rounded-2xl border border-white/[0.08] bg-white/[0.02] p-4 sm:p-7 md:p-8 transition-all duration-500 ease-out hover:border-[#4093FF]/40 hover:bg-white/[0.04] hover:shadow-[0_0_40px_rgba(64,147,255,0.06)] [&:nth-child(4)]:lg:col-start-1 [&:nth-child(4)]:lg:col-end-2 [&:nth-child(4)]:lg:translate-x-[50%] [&:nth-child(5)]:lg:col-start-2 [&:nth-child(5)]:lg:col-end-3 [&:nth-child(5)]:lg:translate-x-[50%]"
               >
                 {/* Hover glow overlay */}
                 <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100">
@@ -106,26 +106,25 @@ export default function ServicesSection() {
                 </div>
 
                 {/* Icon */}
-                <div className="relative mb-5 flex h-11 w-11 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] transition-all duration-500 group-hover:border-[#4093FF]/30 group-hover:bg-[#4093FF]/10 group-hover:shadow-[0_0_20px_rgba(64,147,255,0.15)]">
+                <div className="relative mb-3 sm:mb-5 flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-lg sm:rounded-xl border border-white/[0.08] bg-white/[0.04] transition-all duration-500 group-hover:border-[#4093FF]/30 group-hover:bg-[#4093FF]/10 group-hover:shadow-[0_0_20px_rgba(64,147,255,0.15)]">
                   <Icon
-                    size={20}
                     strokeWidth={1.5}
-                    className="text-white/50 transition-colors duration-500 group-hover:text-[#4093FF]"
+                    className="h-4 w-4 sm:h-5 sm:w-5 text-white/50 transition-colors duration-500 group-hover:text-[#4093FF]"
                   />
                 </div>
 
                 {/* Name */}
-                <h3 className="relative text-lg font-semibold tracking-tight text-white transition-colors duration-500 group-hover:text-white">
+                <h3 className="relative text-sm sm:text-lg font-semibold tracking-tight text-white transition-colors duration-500 group-hover:text-white">
                   {domain.name}
                 </h3>
 
                 {/* Description */}
-                <p className="relative mt-2 text-sm leading-relaxed text-white/35 transition-colors duration-500 group-hover:text-white/55">
+                <p className="relative mt-1.5 sm:mt-2 text-xs sm:text-sm leading-relaxed text-white/35 transition-colors duration-500 group-hover:text-white/55">
                   {domain.description}
                 </p>
 
                 {/* Bottom accent line on hover */}
-                <div className="absolute inset-x-7 bottom-0 h-px scale-x-0 bg-gradient-to-r from-transparent via-[#4093FF]/40 to-transparent transition-transform duration-500 group-hover:scale-x-100 sm:inset-x-8" />
+                <div className="absolute inset-x-4 sm:inset-x-7 md:inset-x-8 bottom-0 h-px scale-x-0 bg-gradient-to-r from-transparent via-[#4093FF]/40 to-transparent transition-transform duration-500 group-hover:scale-x-100" />
               </div>
             );
           })}
