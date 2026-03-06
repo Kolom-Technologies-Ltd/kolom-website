@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import FloatingLinesBg from "@/components/FloatingLinesBg";
+import ShinyText from "@/components/ShinyText";
 
 export default function HeroSection() {
   return (
@@ -26,16 +27,15 @@ export default function HeroSection() {
         {/* Headline */}
         <h1
           className="max-w-4xl text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-7xl"
-          style={{ textShadow: "0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.6)" }}
         >
           We engineer digital
           <br />
-          <span
-            className="bg-gradient-to-r from-[#4093FF] via-[#6db3ff] to-[#4093FF] bg-clip-text text-transparent"
-            style={{ textShadow: "0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.6)" }}
-          >
-            experiences that matter
-          </span>
+          <ShinyText
+            text="experiences that matter"
+            color="#ffffff"
+            shineColor="#4093FF"
+            speed={3}
+          />
         </h1>
 
         {/* Subheadline */}
