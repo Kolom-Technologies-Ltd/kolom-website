@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://kolom.ai/sitemap.xml",
+    sitemap: "https://kolom.ltd/sitemap.xml",
   };
 }

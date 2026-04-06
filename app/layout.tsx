@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kolom.ai"),
+  metadataBase: new URL("https://kolom.ltd"),
   title: "Kolom Technologies | Software, Design & AI Solutions",
   description:
     "Kolom Technologies Ltd. is an elite team of engineers, designers and AI specialists building the next generation of software products.",
