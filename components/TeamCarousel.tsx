@@ -37,7 +37,7 @@ export default function TeamCarousel() {
   const active = team[activeIndex];
 
   return (
-    <div className="mt-12 lg:mt-20 lg:grid lg:grid-cols-[1fr_440px] lg:items-end lg:gap-12 xl:grid-cols-[1fr_500px]">
+    <div className="mt-12 lg:mt-20 lg:grid lg:grid-cols-[1fr_260px] lg:items-end lg:gap-12 xl:grid-cols-[1fr_280px]">
       {/* Featured image — hidden on mobile, right column on desktop */}
       <div className="relative hidden lg:block lg:order-2">
         {/* Blue geometric triangle accent */}
@@ -46,7 +46,7 @@ export default function TeamCarousel() {
         />
 
         {/* Image container */}
-        <div className="relative z-10 aspect-[3/4] overflow-hidden rounded-2xl bg-neutral-900">
+        <div className="relative z-10 aspect-[4/5] overflow-hidden rounded-2xl bg-neutral-900">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
@@ -62,7 +62,7 @@ export default function TeamCarousel() {
                 alt={active.name}
                 fill
                 className="object-cover object-top"
-                sizes="(max-width: 1024px) 100vw, 500px"
+                sizes="(max-width: 1024px) 100vw, 280px"
                 loading="lazy"
               />
               {/* Subtle bottom vignette */}
