@@ -15,6 +15,7 @@ import {
 import type { LucideIcon } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { GlowCard } from "@/components/ui/glow-card";
 
 /* ------------------------------------------------------------------ */
 /*  Data                                                               */
@@ -141,6 +142,7 @@ export default function SolutionsSection() {
 
   return (
     <section
+      id="solutions"
       className="relative overflow-hidden bg-black py-24 sm:py-32 lg:py-40"
     >
       {/* Background radial glow */}
@@ -305,10 +307,16 @@ export default function SolutionsSection() {
                         ease: "easeOut" as const,
                         delay: i * 0.075,
                       }}
-                      className="rounded-lg sm:rounded-xl border border-white/[0.08] bg-white/[0.02] px-3 py-2.5 sm:px-5 sm:py-4 text-xs sm:text-sm text-white/50"
                     >
-                      <span className="mr-2 text-[#4093FF]/50">&#x2022;</span>
-                      {cap}
+                      <GlowCard
+                        className="h-full rounded-lg px-3 py-2.5 text-xs text-white/50 hover:text-white/70 sm:rounded-xl sm:px-5 sm:py-4 sm:text-sm"
+                        accentClassName="inset-x-3 sm:inset-x-5"
+                      >
+                        <span className="relative mr-2 text-[#4093FF]/50">
+                          &#x2022;
+                        </span>
+                        <span className="relative">{cap}</span>
+                      </GlowCard>
                     </motion.div>
                   ))}
                 </div>

@@ -18,6 +18,7 @@ import {
 import { caseStudyIcons } from "@/lib/case-study-icons";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { GlowCard, GlowCardIcon } from "@/components/ui/glow-card";
 
 /* ------------------------------------------------------------------ */
 /*  Static generation                                                  */
@@ -157,42 +158,34 @@ export default async function CaseStudyPage({
           {/* ── Challenge & Solution ── */}
           <div className="mb-16 grid grid-cols-1 gap-6 md:grid-cols-2">
             {/* Challenge */}
-            <div className="group rounded-2xl border border-white/[0.08] bg-white/[0.02] p-7 transition-all duration-500 hover:border-[#4093FF]/40 hover:shadow-[0_0_40px_rgba(64,147,255,0.06)] sm:p-8">
-              <div className="mb-4 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] transition-all duration-500 group-hover:border-[#4093FF]/30 group-hover:bg-[#4093FF]/10">
-                  <Target
-                    size={18}
-                    strokeWidth={1.5}
-                    className="text-white/40 transition-colors duration-500 group-hover:text-[#4093FF]"
-                  />
-                </div>
+            <GlowCard className="p-7 sm:p-8" accentClassName="inset-x-7 sm:inset-x-8">
+              <div className="relative mb-4 flex items-center gap-3">
+                <GlowCardIcon className="h-10 w-10">
+                  <Target size={18} strokeWidth={1.5} />
+                </GlowCardIcon>
                 <h2 className="text-lg font-semibold text-white">
                   The Challenge
                 </h2>
               </div>
-              <p className="text-sm leading-relaxed text-white/40 sm:text-base">
+              <p className="relative text-sm leading-relaxed text-white/40 transition-colors duration-500 group-hover:text-white/55 sm:text-base">
                 {study.challenge}
               </p>
-            </div>
+            </GlowCard>
 
             {/* Solution */}
-            <div className="group rounded-2xl border border-white/[0.08] bg-white/[0.02] p-7 transition-all duration-500 hover:border-[#4093FF]/40 hover:shadow-[0_0_40px_rgba(64,147,255,0.06)] sm:p-8">
-              <div className="mb-4 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] transition-all duration-500 group-hover:border-[#4093FF]/30 group-hover:bg-[#4093FF]/10">
-                  <Lightbulb
-                    size={18}
-                    strokeWidth={1.5}
-                    className="text-white/40 transition-colors duration-500 group-hover:text-[#4093FF]"
-                  />
-                </div>
+            <GlowCard className="p-7 sm:p-8" accentClassName="inset-x-7 sm:inset-x-8">
+              <div className="relative mb-4 flex items-center gap-3">
+                <GlowCardIcon className="h-10 w-10">
+                  <Lightbulb size={18} strokeWidth={1.5} />
+                </GlowCardIcon>
                 <h2 className="text-lg font-semibold text-white">
                   Our Solution
                 </h2>
               </div>
-              <p className="text-sm leading-relaxed text-white/40 sm:text-base">
+              <p className="relative text-sm leading-relaxed text-white/40 transition-colors duration-500 group-hover:text-white/55 sm:text-base">
                 {study.solution}
               </p>
-            </div>
+            </GlowCard>
           </div>
 
           {/* ── Key Features ── */}
@@ -269,15 +262,14 @@ export default async function CaseStudyPage({
               )}
             >
               {study.results.map((r) => (
-                <div
-                  key={r.label}
-                  className="group rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 text-center transition-all duration-500 hover:border-[#4093FF]/40 hover:shadow-[0_0_40px_rgba(64,147,255,0.06)]"
-                >
-                  <p className="text-3xl font-bold text-[#4093FF] sm:text-4xl">
+                <GlowCard key={r.label} className="p-6 text-center">
+                  <p className="relative text-3xl font-bold text-[#4093FF] sm:text-4xl">
                     {r.value}
                   </p>
-                  <p className="mt-2 text-sm text-white/40">{r.label}</p>
-                </div>
+                  <p className="relative mt-2 text-sm text-white/40 transition-colors duration-500 group-hover:text-white/55">
+                    {r.label}
+                  </p>
+                </GlowCard>
               ))}
             </div>
           </div>

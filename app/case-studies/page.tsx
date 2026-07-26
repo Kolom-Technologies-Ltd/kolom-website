@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Case Studies — Kolom Technologies",
   description:
-    "Explore our portfolio of software products — from workforce scheduling to AI-powered news intelligence.",
+    "Explore our portfolio of software products, from workforce scheduling to AI-powered news intelligence.",
 };
 
 export default function CaseStudiesPage() {
@@ -53,7 +53,7 @@ export default function CaseStudiesPage() {
               </span>
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/40 sm:text-lg">
-              Real products we&apos;ve built — from idea to launch and beyond.
+              Real products we&apos;ve built, from idea to launch and beyond.
             </p>
           </div>
 

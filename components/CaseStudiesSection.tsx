@@ -62,7 +62,7 @@ export default function CaseStudiesSection() {
             </span>
           </h2>
           <p className="mt-4 text-base leading-relaxed text-white/40 sm:text-lg md:mt-6">
-            Products we have shipped end-to-end — from discovery and design
+            Products we have shipped end-to-end, from discovery and design
             through development, launch, and ongoing iteration.
           </p>
         </div>

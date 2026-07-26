@@ -49,6 +49,7 @@ const domains: Domain[] = [
 export default function ServicesSection() {
   return (
     <section
+      id="services"
       className="relative overflow-hidden bg-black py-24 sm:py-32 lg:py-40"
     >
       {/* Subtle top gradient for seamless hero transition */}

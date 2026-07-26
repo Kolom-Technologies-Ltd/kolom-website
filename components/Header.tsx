@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, ArrowUpRight, ArrowRight } from "lucide-react";
 import { caseStudies } from "@/lib/case-studies";
 import { caseStudyIcons } from "@/lib/case-study-icons";
@@ -19,6 +20,12 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const megaTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pathname = usePathname();
+
+  const isActive = useCallback(
+    (href: string) => pathname === href || pathname.startsWith(`${href}/`),
+    [pathname]
+  );
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -106,7 +113,9 @@ export default function Header() {
                       "relative px-4 py-1.5 text-sm font-medium transition-colors duration-300 rounded-full",
                       megaOpen
                         ? "text-white bg-white/5"
-                        : "text-white/60 hover:text-white hover:bg-white/5",
+                        : isActive(link.href)
+                          ? "text-[#4093FF] bg-[#4093FF]/10"
+                          : "text-white/60 hover:text-white hover:bg-white/5",
                     ].join(" ")}
                   >
                     {link.label}
@@ -116,7 +125,12 @@ export default function Header() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="relative px-4 py-1.5 text-sm font-medium text-white/60 transition-colors duration-300 hover:text-white rounded-full hover:bg-white/5"
+                  className={[
+                    "relative px-4 py-1.5 text-sm font-medium transition-colors duration-300 rounded-full",
+                    isActive(link.href)
+                      ? "text-[#4093FF] bg-[#4093FF]/10"
+                      : "text-white/60 hover:text-white hover:bg-white/5",
+                  ].join(" ")}
                 >
                   {link.label}
                 </Link>
@@ -126,10 +140,10 @@ export default function Header() {
 
           {/* ── CTA button (right) ── */}
           <Link
-            href="mailto:team@kolom.ai"
+            href="mailto:team@kolom.ltd"
             className="hidden md:inline-flex items-center flex-shrink-0 rounded-full bg-white px-5 py-2 text-sm font-semibold text-black transition-all duration-300 hover:bg-white/90 hover:shadow-lg hover:shadow-white/10"
           >
-            team@kolom.ai
+            team@kolom.ltd
           </Link>
 
           {/* ── Mobile hamburger ── */}
@@ -256,7 +270,12 @@ export default function Header() {
                 ].join(" ")}
                 style={{ transitionDelay: mobileOpen ? `${100 + i * 60}ms` : "0ms" }}
               >
-                <span className="text-2xl font-semibold tracking-tight text-white/80 transition-colors duration-300 group-hover:text-[#4093FF]">
+                <span
+                  className={[
+                    "text-2xl font-semibold tracking-tight transition-colors duration-300 group-hover:text-[#4093FF]",
+                    isActive(link.href) ? "text-[#4093FF]" : "text-white/80",
+                  ].join(" ")}
+                >
                   {link.label}
                 </span>
                 <span className="text-xs font-medium tabular-nums text-white/20">
@@ -278,11 +297,11 @@ export default function Header() {
           >
             {/* CTA */}
             <Link
-              href="mailto:team@kolom.ai"
+              href="mailto:team@kolom.ltd"
               onClick={closeMobile}
               className="group flex items-center justify-center gap-2.5 rounded-full bg-white px-7 py-4 text-sm font-semibold text-black transition-all duration-300 hover:bg-[#4093FF] hover:text-white hover:shadow-[0_0_30px_rgba(64,147,255,0.3)]"
             >
-              team@kolom.ai
+              team@kolom.ltd
               <ArrowUpRight
                 size={16}
                 strokeWidth={2.5}

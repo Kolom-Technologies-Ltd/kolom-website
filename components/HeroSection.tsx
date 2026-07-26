@@ -112,7 +112,7 @@ export default function HeroSection() {
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
         <a
-          href="/services"
+          href="#services"
           className="flex flex-col items-center gap-1 text-white/30 transition-colors hover:text-white/50"
         >
           <span className="text-[10px] font-medium tracking-widest uppercase">

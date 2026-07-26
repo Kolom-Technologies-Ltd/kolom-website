@@ -135,10 +135,10 @@ export default function PrivacyPage() {
               <p className="mt-3">
                 To exercise any of these rights, please contact us at{" "}
                 <a
-                  href="mailto:team@kolom.ai"
+                  href="mailto:team@kolom.ltd"
                   className="text-[#4093FF] transition-colors duration-300 hover:text-[#6db3ff]"
                 >
-                  team@kolom.ai
+                  team@kolom.ltd
                 </a>
                 .
               </p>
@@ -169,10 +169,10 @@ export default function PrivacyPage() {
                 If you have any questions about this Privacy Policy, please
                 contact us at{" "}
                 <a
-                  href="mailto:team@kolom.ai"
+                  href="mailto:team@kolom.ltd"
                   className="text-[#4093FF] transition-colors duration-300 hover:text-[#6db3ff]"
                 >
-                  team@kolom.ai
+                  team@kolom.ltd
                 </a>
                 .
               </p>

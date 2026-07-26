@@ -75,8 +75,8 @@ export default function TermsPage() {
               <h2>3. Intellectual Property</h2>
               <ul>
                 <li>
-                  All content on this website — including text, graphics, logos,
-                  and software — is the property of Kolom Technologies Ltd. and
+                  All content on this website, including text, graphics, logos,
+                  and software, is the property of Kolom Technologies Ltd. and
                   is protected by applicable intellectual property laws.
                 </li>
                 <li>
@@ -146,10 +146,10 @@ export default function TermsPage() {
                 If you have any questions about these Terms &amp; Conditions,
                 please contact us at{" "}
                 <a
-                  href="mailto:team@kolom.ai"
+                  href="mailto:team@kolom.ltd"
                   className="text-[#4093FF] transition-colors duration-300 hover:text-[#6db3ff]"
                 >
-                  team@kolom.ai
+                  team@kolom.ltd
                 </a>
                 .
               </p>

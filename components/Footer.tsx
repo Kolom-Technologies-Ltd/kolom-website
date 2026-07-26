@@ -12,8 +12,8 @@ const navLinks = [
 const contactInfo = [
   {
     icon: Mail,
-    label: "team@kolom.ai",
-    href: "mailto:team@kolom.ai",
+    label: "team@kolom.ltd",
+    href: "mailto:team@kolom.ltd",
   },
   {
     icon: Phone,
@@ -64,7 +64,7 @@ export default function Footer() {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="mailto:team@kolom.ai"
+              href="mailto:team@kolom.ltd"
               className="group inline-flex items-center gap-2.5 rounded-full bg-[#4093FF] px-8 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#5aa3ff] hover:shadow-[0_0_40px_rgba(64,147,255,0.3)]"
             >
               Get in Touch
